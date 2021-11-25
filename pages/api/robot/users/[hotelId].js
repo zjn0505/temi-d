@@ -24,7 +24,7 @@ export default function handler(req, res) {
         if (hotelId) {
             console.log(`hotel ${hotelId}`)
             getHotelUserData(hotelId, (users) => {
-                res.status(200).json(users)
+                res.status(200).json(Object.keys(users).map(key => users[key]))
             })
         } else {
             res.status(400).json({

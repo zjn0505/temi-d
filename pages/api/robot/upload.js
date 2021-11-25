@@ -12,7 +12,6 @@ function writeHotelLocation(hotel, locations) {
 
 export default function handler(req, res) {
     if (req.method === 'POST') {
-        // console.log("req =" + JSON.stringify(req.body))
         let hotelId = req.body.hotelId
         let locations = req.body.locations
         if (hotelId && locations) {

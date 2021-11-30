@@ -1,4 +1,5 @@
 import database from '../../../firebase/clientApp';
+import sendSMS from '../../../alicloud/sms';
 import {
     ref,
     onValue,
@@ -28,6 +29,7 @@ export default function handler(req, res) {
                         .then(() => {
                             res.status(200).json(user)
                         })
+                    sendSMS(user.phone, user.name, user.location)    
                 } else {
                     res.status(400).json({
                         error: "invalid user"

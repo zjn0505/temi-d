@@ -59,7 +59,7 @@ export async function getServerSideProps({params}) {
     })
     const locations = () => {
         const currFloor = hotel.locations.find(item => item.floor === floor)
-        if(currFloor){
+        if(currFloor && currFloor.locations){
             return currFloor.locations.filter(loc => !['elevator', 'elevator door', 'home base'].includes(loc)).map((loc, index) => {
                 return <option key={index + loc} value={loc}>{loc}</option>
             })
@@ -109,11 +109,11 @@ export async function getServerSideProps({params}) {
         }
     }
     return (
-        <div className="row justify-content-center">
+        <div className="row justify-content-center m-4">
             <div className="col-12 col-sm-10 col-lg-6">
                 {AlertComp()}
-                <title>Register</title>
-                <h1>Register</h1>
+                <title>注册</title>
+                <h1>注册</h1>
                 <div className="input-group mb-3 mt-3">
                     <span className="input-group-text" id="basic-addon1">姓名</span>
                     <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" onChange={(e) => setUserName(e.target.value)}/>
